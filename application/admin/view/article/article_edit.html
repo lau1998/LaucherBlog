@@ -1,0 +1,245 @@
+{include file="templet/_meta" /}
+<link href="__STATIC__/admin/lib/webuploader/0.1.5/webuploader.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div class="page-container">
+	<form class="form form-horizontal" id="form-article-add"  method="post" enctype="multipart/form-data" action="{:url('article_add_exe')}">
+	  	<div class="col-md-9" style="">
+	  		<div class="row cl">
+				<label class="form-label col-xs-4 col-sm-2" ><span class="c-red">*</span>分类：</label>
+				<div class="formControls col-xs-8 col-sm-9">
+					<div class="skin-minimal">
+						{volist name="list" id="lei"}
+							<div class="check-box">
+
+								<input type="checkbox" class="parent_id" id="{$lei.id}" name="post_class[]" value="{$lei.name}" id="post_class">
+
+								<label for="{$lei.id}">{$lei.name}</label>
+						   		<input type="checkbox" class="parent_id" id="{$lei.id}" name="post_class[]" value="{$lei.name}" id="post_class">
+								<label for="{$lei.id}">{$lei.name}</label>
+							</div>
+						{/volist}
+					</div>
+				</div>
+			</div>
+			<div class="row cl">
+				<label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>标题：</label>
+				<div class="formControls col-xs-8 col-sm-9">
+					<input type="text" class="input-text" placeholder="" id="post_title" name="post_title" required value="{$v.post_title}">
+				</div>
+			</div>
+			<div class="row cl">
+				<label class="form-label col-xs-4 col-sm-2">关键字：</label>
+				<div class="formControls col-xs-8 col-sm-9">
+					<input type="text" class="input-text" value="{$v.post_keywords}" placeholder="多关键词之间用英文逗号隔开" id="post_keywords" name="post_keywords">
+				</div>
+			</div>
+			<div class="row cl">
+				<label class="form-label col-xs-4 col-sm-2">文章来源：</label>
+				<div class="formControls col-xs-8 col-sm-9">
+					<input type="text" class="input-text" value="{$v.post_source}" placeholder="" id="post_source" name="post_source">
+				</div>
+			</div>
+			<div class="row cl">
+				<label class="form-label col-xs-4 col-sm-2">摘要：</label>
+				<div class="formControls col-xs-8 col-sm-9">
+					<input type="text" class="input-text" value="{$v.post_excerpt}" placeholder="" id="post_excerpt" name="post_excerpt">
+				</div>
+			</div>
+			<div class="row cl">
+				<label class="form-label col-xs-4 col-sm-2">详细内容：</label>
+				<div class="formControls col-xs-8 col-sm-9"> 
+					<textarea name="post_content" id="editor" style="width:100%;height:400px;">{$v.post_content}</textarea> <!-- 放编辑器的内容 -->
+				</div>
+			</div>
+			<!-- <div class="row cl">
+				<label class="form-label col-xs-4 col-sm-2">图片上传：</label>
+				<div class="formControls col-xs-8 col-sm-9">
+					<div class="uploader-list-container">
+						<div class="queueList" >
+							<div id="dndArea" class="placeholder">
+								<div id="filePicker-2"></div>
+								<p>或将照片拖到这里，单次最多可选300张</p>
+							</div>
+						</div>
+						<div class="statusBar" style="display:none;">
+							<div class="progress"> <span class="text">0%</span> <span class="percentage"></span> </div>
+							<div class="info"></div>
+							<div class="btns">
+								<div id="filePicker2"></div>
+								<div class="uploadBtn">开始上传</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div> -->
+		</div>
+		<div class="col-md-3" style="">
+			<div class="col-md-12 col-sm-12 col-xs-12">
+			  	<div class="col-md-12 col-sm-12 col-xs-12" >
+			        		<div class="cover-wrap" style="display:none;position:fixed;left:0;top:0;width:100%;height:100%;background: rgba(0, 0, 0, 0.4);z-index: 10000000;text-align:center;">	
+			        			<div class="" style="width:900px;height:500px;margin:4px auto;background-color:#FFFFFF;overflow: hidden;border-radius:4px;">
+			        				<div id="clipArea" style="margin:10px;height: 420px;"></div>
+			        				<div class="" style="height:56px;line-height:36px;text-align: center;padding-top:8px;">
+			        					<input class="btn btn-primary radius " type="button" value="&nbsp;&nbsp;确认剪切&nbsp;&nbsp;" id="clipBtn">
+			        				</div>
+			        			</div>
+			        		</div>
+			        		<div id="view"  style="width:214px;height:160.5px;" title="请上传 428*321 的封面图片">
+			        			<span  style="display:block;">
+			        				<img src="/uploads/article/fm_img/{$v.thumbnail}" style="width:214px;height:160.5px;" id="image">
+			        			</span>
+			        		</div>
+				        	<div style="height:10px;"></div>
+				        	<div class="" style="width:140px;height:32px;border-radius: 4px;background-color:#ff8a00;color: #FFFFFF;font-size: 14px;text-align:center;line-height:32px;outline:none;margin-left:37px;position:relative;">
+				        		点击上传封面图
+				        		<input type="file" id="file" style="cursor:pointer;opacity:0;filter:alpha(opacity=0);width:100%;height:100%;position:absolute;top:0;left:0;" name="image">
+				        		
+				        	</div>
+			    </div>		        	
+			</div>
+			<div class="row cl  col-md-12 col-xs-12 col-sm-12 text-c">
+				更新时间：<br/><br/>
+					<input class="input-text" id="dateinfo" type="text" placeholder="请选择"  readonly name="up_time" value="">
+			</div>
+		</div>
+		<div class="row cl">
+			<div class="col-xs-8 col-sm-9 col-xs-offset-4 col-sm-offset-2">
+				<button  class="btn btn-primary radius" type="submit" ><i class="Hui-iconfont">&#xe632;</i> 保存并提交审核</button>
+				<button onClick="article_save();" class="btn btn-secondary radius" type="button"><i class="Hui-iconfont">&#xe632;</i> 保存草稿</button>
+				<button onClick="layer_close();" class="btn btn-default radius" type="button">&nbsp;&nbsp;取消&nbsp;&nbsp;</button>
+			</div>
+		</div>
+	</form>
+</div>
+
+{include file="templet/_footer" /}
+
+<!--请在下方写此页面业务相关的脚本-->
+<script type="text/javascript" src="__STATIC__/admin/lib/My97DatePicker/4.8/WdatePicker.js"></script>
+<script type="text/javascript" src="__STATIC__/admin/lib/jquery.validation/1.14.0/jquery.validate.js"></script> 
+<script type="text/javascript" src="__STATIC__/admin/lib/jquery.validation/1.14.0/validate-methods.js"></script> 
+<script type="text/javascript" src="__STATIC__/admin/lib/jquery.validation/1.14.0/messages_zh.js"></script>
+<script type="text/javascript" src="__STATIC__/admin/lib/webuploader/0.1.5/webuploader.min.js"></script> 
+<script type="text/javascript" src="__STATIC__/admin/lib/ueditor/1.4.3/ueditor.config.js"></script>
+<script type="text/javascript" src="__STATIC__/admin/lib/ueditor/1.4.3/ueditor.all.min.js"> </script>
+<script type="text/javascript" src="__STATIC__/admin/lib/ueditor/1.4.3/lang/zh-cn/zh-cn.js"></script>
+<script src="__STATIC__/admin/static/iscroll-zoom_3.js" type="text/javascript" charset="utf-8"></script>
+<script src="__STATIC__/admin/static/lrz.all.bundle_3.js" type="text/javascript" charset="utf-8"></script>
+<script src="__STATIC__/admin/static/jquery.photoclip.min_3.js" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript" src="__STATIC__/jeDate/jedate.js"></script>
+<script type="text/javascript">
+$(function(){
+	$('.skin-minimal input').iCheck({
+		checkboxClass: 'icheckbox-blue',
+		radioClass: 'iradio-blue',
+		increaseArea: '20%'
+	})});
+$("#post_title").blur(function(){
+	if($("#post_title").val()==""){
+	      layer.msg('标题好像没写哦！', {
+	            icon: 5,//提示的样式
+	            time:2000,
+	        });
+	      return false;
+	   }
+});
+$("#editor").blur(function(){
+	if($("#editor").val()==""){
+	      layer.msg('嘿！内容好像没写！', {
+	            icon: 5,//提示的样式
+	            time:2000,
+	        });
+	      return false;
+	   }
+});
+//上传封面
+//document.addEventListener('touchmove', function (e) { e.preventDefault(); }, false);
+var clipArea = new bjj.PhotoClip("#clipArea", {
+	size: [428, 321],// 截取框的宽和高组成的数组。默认值为[260,260]
+	outputSize: [428, 321], // 输出图像的宽和高组成的数组。默认值为[0,0]，表示输出图像原始大小
+	//outputType: "jpg", // 指定输出图片的类型，可选 "jpg" 和 "png" 两种种类型，默认为 "jpg"
+	file: "#file", // 上传图片的<input type="file">控件的选择器或者DOM对象
+	view: "#view", // 显示截取后图像的容器的选择器或者DOM对象
+	ok: "#clipBtn", // 确认截图按钮的选择器或者DOM对象
+	loadStart: function() {
+		// 开始加载的回调函数。this指向 fileReader 对象，并将正在加载的 file 对象作为参数传入
+		$('.cover-wrap').fadeIn();
+		console.log("照片读取中");
+	},
+	loadComplete: function() {
+		 // 加载完成的回调函数。this指向图片对象，并将图片地址作为参数传入
+		console.log("照片读取完成");
+	},
+	//loadError: function(event) {}, // 加载失败的回调函数。this指向 fileReader 对象，并将错误事件的 event 对象作为参数传入
+	clipFinish: function(dataURL) {
+		 // 裁剪完成的回调函数。this指向图片对象，会将裁剪出的图像数据DataURL作为参数传入
+		$('.cover-wrap').fadeOut();
+		$('#view').css('background-size','100% 100%');
+		document.getElementById('image').style.display='none';
+		console.log(dataURL);
+	}
+});
+$(function(){
+	var ue = UE.getEditor('editor');
+});
+
+</script>
+<script type="text/javascript">
+    //jeDate.skin('gray');
+    jeDate({
+		dateCell:"#dateinfo",
+		format:"YYYY/MM/DD hh:mm:ss",
+		isinitVal:true,
+		isTime:true, //isClear:false,
+		minDate:"2014-09-19 00:00:00",
+		okfun:function(val){
+			layer.msg(val);
+		}
+	})
+//ajax上传文章
+function article_save_submit()
+{
+	var formData= new FormData();
+	var img_file=document.getElementById("file");
+	var fileObj=img_file.files[0];
+	// formData.append("post_class", $(".parent_id").val());
+	// formData.append("post_title", $("#post_title").val());
+	// formData.append("post_keywords", $("#post_keywords").val());
+	// formData.append("post_source", $("#post_source").val());
+	// formData.append("post_content", $("#editor").val());
+	// formData.append("post_excerpt", $("#post_excerpt").val());
+	// formData.append("create_time", $("#dateinfo").val());
+	// formData.append("post_status", $("#post_status").val());
+	// formData.append("comment_status", $("#comment_status").val());
+	// formData.append("recommended", $("#recommended").val());
+	// formData.append("is_top", $("#is_top").val());
+	var data=$("#form-article-add").serializeArray();
+	formData.append("image",fileObj);
+	formData.append("data",data);
+	$.ajax({
+		url:'article_add_exe.html',
+		type:'POST',
+		data:formData,
+		async:false,
+		cache:false,
+		contentType:false,
+		processData : false,
+		success:function(data){
+			if (data==='success') {
+				layer.msg('恭喜，添加文章成功!',{icon:1,time:1000,end:function(index){
+  					window.parent.location.reload(); //刷新父页面
+  					layer.close(index);
+			}});	
+			} else {
+				layer.msg('抱歉，添加文章失败！',{icon:2,time:1000});
+			}
+		},
+		error:function(data){
+
+		}
+	});
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,43 @@
+<nav class="navbar navbar-expand-lg">
+                        <!-- Logo -->
+                        <a class="navbar-brand" href="index.html"><img src="__STATIC__/index/img/core-img/logo.png" alt="Logo"></a>
+                        <!-- Navbar Toggler -->
+                        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#worldNav" aria-controls="worldNav" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+                        <!-- Navbar -->
+                        <div class="collapse navbar-collapse" id="worldNav">
+                            <ul class="navbar-nav ml-auto">
+                                <li class="nav-item ">
+                                    <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
+                                </li>
+                                 {volist name="nav" id="nav"}
+                                    <li class="nav-item {eq name='$nav.name' value='工具箱'} active {/eq}">
+                                        <a class="nav-link" href="{$nav.href}" {$nav.target}>{$nav.name}<span class="sr-only">(current)</span></a>
+                                    </li>
+                                {/volist}
+                                {neq name="uinfo" value=""}
+                                 <li class="nav-item dropdown">
+                                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">个人中心</a>
+                                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                    {elt name="uinfo['user_type']" value="1"}
+                                    <a class="dropdown-item" href="/admin">进入后台</a>
+                                    {/elt}
+                                        <a class="dropdown-item" href="index.html">查看个人信息</a>
+                                        <a class="dropdown-item" href="{:url('index/Login/logout')}">登出</a>
+                                    </div>
+                                </li>
+                                {else/}
+                                 <li class="nav-item ">
+                                    <a class="nav-link" href="javascript:;" onclick="login()" data-toggle="tooltip" data-placement="bottom" title="登录是一种态度">Login</a>
+                                </li>
+                                {/neq}
+                            </ul>
+                            <!-- Search Form  -->
+                            <div id="search-wrapper">
+                                <form action="#">
+                                    <input type="text" id="search" placeholder="Search something...">
+                                    <div id="close-icon"></div>
+                                    <input class="d-none" type="submit" value="">
+                                </form>
+                            </div>
+                        </div>
+                    </nav>

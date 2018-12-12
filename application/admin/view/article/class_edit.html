@@ -1,0 +1,60 @@
+{include file="templet/_meta" /}
+<title>编辑幻灯片</title>
+<link href="__STATIC__/admin/lib/webuploader/0.1.5/webuploader.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div class="page-container">
+	<form class="form form-horizontal" id="form-article-add">
+		<div class="row cl">
+			<label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>幻灯片标题：</label>
+			<div class="formControls col-xs-8 col-sm-9">
+				<input type="text" class="input-text" value="{$l.name}" placeholder="" id="" name="name">
+				<input type="hidden" value="{$l.id}" name="id">
+			</div>
+		</div>
+		<div class="row cl">
+			<label class="form-label col-xs-4 col-sm-2">幻灯片描述：</label>
+			<div class="formControls col-xs-8 col-sm-9">
+				<textarea name="description" cols="" rows="" class="textarea"  placeholder="说点什么...最少输入10个字符" datatype="*10-100" dragonfly="true" nullmsg="备注不能为空！" onKeyUp="$.Huitextarealength(this,200)">{$l.description}</textarea>
+				<p class="textarea-numberbar"><em class="textarea-length">0</em>/200</p>
+			</div>
+		</div>
+		<div class="row cl">
+			<div class="col-xs-8 col-sm-9 col-xs-offset-4 col-sm-offset-2">
+				<button onClick="class_save();" class="btn btn-secondary radius" type="button"><i class="Hui-iconfont">&#xe632;</i> 保存</button>
+				<button onClick="layer_close();" class="btn btn-default radius" type="button">&nbsp;&nbsp;取消&nbsp;&nbsp;</button>
+			</div>
+		</div>
+	</form>
+</div>
+
+
+{include file="templet/_footer" /}
+
+<!--请在下方写此页面业务相关的脚本-->
+<script>
+function class_save(){
+		$.ajax({
+			type: 'post',
+			data:$("#form-article-add").serializeArray(),
+			url: "{:url('class_edit_exe')}",
+			dataType: 'json',
+			success: function(data){
+				if (data=="success") {
+					layer.msg('已成功修改!',{icon:1,time:1000,end:function(index){
+  					window.parent.location.reload(); //刷新父页面
+  					layer.close(index);
+			}});	
+		}else{	
+			layer.msg('修改失败!',{icon:5,time:1000});
+		}},
+			error:function(data) {
+				console.log(data.msg);
+			},
+		});
+
+}
+</script>
+
+</body>
+</html>

@@ -1,0 +1,89 @@
+{include file="templet/_meta" /}
+<title>修改幻灯片</title>
+</head>
+<body>
+<div class="page-container">
+<form class="form form-horizontal" id="form-nav_e-add" >
+	<table class="table table-border table-bordered table-bg table-hover table-sort">
+		<thead>
+		  <tr class="text-c">
+		  	<th >
+			<div class="row cl">
+				<label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>上级：</label>
+				<div class="formControls col-xs-8 col-sm-10">
+				<span class="select-box">
+					  <select class="select" size="1" name="parent_id">
+					    <option value="0" selected>/</option>{volist name="list" id="lei"}
+					    <option value="{$lei.id}">{$lei.name}</option>
+					  {/volist}
+					  </select>
+					  <input type="hidden" name="id" value="{$id}">
+				</span>
+				</div>
+				</div>
+			</div>
+			<div class="row cl">
+				<label class="form-label col-xs-4 col-sm-2">地址：</label>
+				<div class="formControls col-xs-8 col-sm-10">
+					<input type="text" class="input-text" placeholder="加'https://'为外链，不加为内链" id="href" name="href" value="{$vs.href}">
+				</div>
+			</div>
+			<div class="row cl">
+				<label class="form-label col-xs-4 col-sm-2">打开方式：</label>
+				<div class="formControls col-xs-8 col-sm-10">
+				<span class="select-box">
+				  <select class="select" size="1" name="target">
+				    <option value="" {eq name="$vs.target" value="" } selected {/eq}>默认方法</option>
+				    <option value="target='view_window'" {neq name="$vs.target" value="" } selected {/neq}>新窗口打开</option>
+				  </select>
+				</span>
+				</div>
+			</div>
+			<div class="row cl">
+				<label class="form-label col-xs-4 col-sm-2">菜单名称：</label>
+				<div class="formControls col-xs-8 col-sm-10">
+					<input type="text" class="input-text" value="{$vs.name}" placeholder="" id="name" name="name">
+				</div>
+			</div>
+			<div class="row cl">
+				<div class="col-xs-4 col-sm-6 col-xs-offset-4 col-sm-offset-2">
+					<input class="btn btn-primary radius " type="button" value="&nbsp;&nbsp;提交&nbsp;&nbsp;" id="submit" onclick="nav_info_edit({$id})">
+					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+					<button onClick="layer_close();" class="btn btn-default radius" type="button">&nbsp;&nbsp;取消&nbsp;&nbsp;</button>
+				</div>
+			</div>
+			</th>
+		   </tr>
+	   <thead>
+ 	</table>
+</form>
+</div>
+
+<!--请在下方写此页面业务相关的脚本-->
+<script src="__STATIC__/admin/static/jquery.min_3.js" type="text/javascript"></script>
+<script src="__STATIC__/admin/static/iscroll-zoom_3.js" type="text/javascript" charset="utf-8"></script>
+<script src="__STATIC__/admin/static/lrz.all.bundle_3.js" type="text/javascript" charset="utf-8"></script>
+<script src="__STATIC__/admin/static/jquery.photoclip.min_3.js" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript">
+function nav_info_edit(id){
+	$.ajax({
+			type: 'post',
+			data:$("#form-nav_e-add").serializeArray(),
+			url: "{:url('nav_info_edit_exe')}",
+			dataType: 'json',
+			success: function(data){
+				if (data=="success") {
+					layer.msg('已修改!',{icon:1,time:2000});	
+					window.parent.location.reload(); //刷新父页面
+  					layer.close(index);
+		}else{	
+			layer.msg('修改失败!',{icon:1,time:2000});
+		}},
+			error:function(data) {
+				console.log(data.msg);
+			},
+		});
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,20 @@
+{include file="templet/_meta" /}
+{block name='seo'}
+网站标题关键字与描述
+</head>
+<body>
+{/block}
+{include file="templet/_header" /}
+{include file="templet/_menu" /}
+{block name="content"}
+页面主题内容
+{/block}
+<!--_footer 作为公共模版分离出去-->
+{include file="templet/_footer" /}
+<!--/_footer 作为公共模版分离出去-->
+
+{block name="js"}
+用户自定义js脚本
+{/block}
+</body>
+</html>

@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- The above 4 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+
+    <!-- Title  -->
+    <title>XML格式化/压缩</title>
+
+    <!-- Favicon  -->
+    <link rel="icon" href="__STATIC__/index/img//core-img/favicon.ico">
+    <link rel="stylesheet" href="__STATIC__/index/lib/Font-Awesome-3.2.1/css/font-awesome.min.css">
+    <link rel="stylesheet" href="__STATIC__/index/css/bootstrap.min.css">
+    <link rel="stylesheet" href="__STATIC__/index/src/jquery.toast.css">
+    {load href="__STATIC__/admin/lib/Hui-iconfont/1.0.8/iconfont.css" /}
+<!--     <link rel="stylesheet" href="__STATIC__/login//css/css.css" media="all"> -->
+    <!-- Style CSS -->
+    {load href="__STATIC__/index/style.css" /}
+</head>
+<body>
+    <!-- Preloader Start -->
+    <div id="preloader">
+        <div class="preload-content">
+            <div id="world-load"></div>
+        </div>
+    </div>
+    <!-- Preloader End -->
+
+    <!-- ***** Header Area Start ***** 顶部导航栏 ***** -->
+    <header class="header-area sticky">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                     {include file="public/nav" /}
+                </div>
+            </div>
+        </div>
+    </header>
+    <script>
+        function login(){
+         layer.open({
+              type: 2,
+              title :'登录是一种态度',
+              anim: 6,  
+              scrollbar: false,//禁止滚动条
+              skin: 'layui-layer-rim', //加上边框
+              area: ['400px', '550px'], //宽高
+              content: "{:url('index/login/index')}"
+            });
+        }
+    </script>
+    <!-- ***** Header Area End ***** -->
+
+    <!-- ********** Hero Area Start 头部幻灯片 ********** -->
+    <div class="hero-area bg-img " style="background-image: url(__STATIC__/index/img/blog-img/b1.jpg);height: 200px" ></div>
+    <!-- ********** Hero Area End ********** -->
+    <!-- ********** 内容 *********** -->
+    <section class="contact-area section-padding-50">
+        <div class="container">
+            <div class="row justify-content-center">
+                <!-- Contact Form Area -->
+                <div class="col-12 col-md-10 col-lg-12">
+                    <h5>XML压缩、格式化：</h5>
+                   <textarea id="content" onfocus="this.select()" class="form-control" name="RawJson" rows="15" spellcheck="false" placeholder="请输入XML 代码"></textarea>
+                   <br/>
+                   <div class="text-right">
+                    <div class="alert alert-warning" role="alert" id="sta" style="display: none;"></div>
+                       <button type="button" class="btn btn-primary" id="format">格式化</button>
+                       <button type="button" class="btn btn-primary" id="yasuo">压缩</button>
+                       <button type="button" class="btn btn-primary" id="demo">来个测试用例</button>
+                       <button id="copy" data-clipboard-target="content" onclick=" alert( '复制成功' );" class="btn btn-success">复制</button>
+                      <button type="button" class="btn btn-danger" onclick="Empty();" >清空结果</button>
+                    </div>
+                </div>
+                <input type="hidden" id="tabsize" value="1" />
+            </div>
+        </div>
+    </section>
+    <br/><br/><br/><br/>
+    <!-- ***** Footer Area Start ***** -->
+    {include file="../../index/view/templet/_footer" /}
+    <!-- ***** Footer Area End ***** -->
+
+    <!-- jQuery (Necessary for All JavaScript Plugins) -->
+    {include file="../../index/view/templet/_js" /}
+    <script src="__STATIC__/tools/xml/jquery.format.js"></script>
+    <script src="__STATIC__/tools/xml/zeroclipboard.min.js"></script>
+   <script type="text/javascript">
+    $('#demo').click(function() {
+        $("#content").val('<?xml version="1.0" encoding="UTF-8"?><PARAM><DBID>35</DBID><SEQUENCE>atgtca</SEQUENCE><MAXNS>10</MAXNS><MINIDENTITIES>90</MINIDENTITIES><MAXEVALUE>10</MAXEVALUE><USERNAME>admin</USERNAME><PASSWORD>111111</PASSWORD><TYPE>P</TYPE><RETURN_TYPE>2</RETURN_TYPE></PARAM>');
+    });
+    
+    $('#format').click(function() {
+         $('#content').format({method: 'xml'});
+    });
+    
+    $('#yasuo').click(function() {
+         $('#content').format({method: 'xmlmin'});
+    });
+    
+     function Empty() {
+        document.getElementById('content').value = '';
+        document.getElementById('content').select();
+    }
+    
+    function GetFocus() {
+            document.getElementById('content').focus();
+    }
+</script>
+<script type="text/javascript">
+var clip = new ZeroClipboard( document.getElementById("copy") );
+</script>
+</body>
+
+</html>

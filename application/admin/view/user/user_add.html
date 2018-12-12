@@ -1,0 +1,220 @@
+{include file="templet/_meta" /}
+
+<title>添加用户</title>
+<!-- <link rel="stylesheet" type="text/css" href="__STATIC__/admin/lib/weui/weui.min.css">
+<script type="text/javascript" src="__STATIC__/admin/lib/jquery/1.9.1/jquery.min.js"></script>
+<script type="text/javascript" src="__STATIC__/admin/lib/lrz.bundle.js"></script>
+<script type="text/javascript">
+    $(document).ready(function(){
+        $("#photo1").change(function(){   
+            upup(this,"#img1","#img");
+            }); 
+        });
+
+    //图片压缩后上传函数
+       function upup(ff,newImg,imgname)
+         {
+          lrz(ff.files[0],{width:300})
+          .then(function (rst) {
+                // 处理成功会执行
+                var img = new Image();
+                img.src = rst.base64;
+                img.onload = function () {
+                  $('#loadingToast').fadeIn();
+                  $(newImg).attr("style","background-image:url("+img.src+")");
+                };
+              })
+              .catch(function (err){
+                    // 处理失败会执行
+                    console.log(err);
+                  })
+        }
+</script> -->
+<body>
+<article class="page-container">
+	<form action="" method="post" class="form form-horizontal" id="form-member-add">
+		<div class="row cl">
+			<label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>登录名：</label>
+			<div class="formControls col-xs-8 col-sm-9">
+				<input type="text" class="input-text" value="" placeholder="" id="userlogin" name="user_login">
+			</div>
+		</div>
+		<div class="row cl">
+			<label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>密码：</label>
+			<div class="formControls col-xs-8 col-sm-9">
+				<input type="text" class="input-text" value="" placeholder="" id="pwd" name="user_pass">
+			</div>
+		</div>
+		<div class="row cl">
+			<label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>昵称：</label>
+			<div class="formControls col-xs-8 col-sm-9">
+				<input type="text" class="input-text" value="" placeholder="" id="username" name="user_nickname">
+			</div>
+		</div>
+		<div class="row cl">
+			<label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>性别：</label>
+			<div class="formControls col-xs-8 col-sm-9 skin-minimal">
+				<div class="radio-box">
+					<input name="sex" type="radio" id="sex-1" value="1" checked>
+					<label for="sex-1">男</label>
+				</div>
+				<div class="radio-box">
+					<input type="radio" id="sex-2" value="2" name="sex">
+					<label for="sex-2">女</label>
+				</div>
+				<!-- <div class="radio-box">
+					<input type="radio" id="sex-3" name="sex">
+					<label for="sex-3">保密</label>
+				</div> -->
+			</div>
+		</div>
+		<div class="row cl">
+			<label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>手机：</label>
+			<div class="formControls col-xs-8 col-sm-9">
+				<input type="text" class="input-text" value="" placeholder="" id="mobile" name="mobile">
+			</div>
+		</div>
+		<div class="row cl">
+			<label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>邮箱：</label>
+			<div class="formControls col-xs-8 col-sm-9">
+				<input type="text" class="input-text" placeholder="@" name="user_email" id="email">
+			</div>
+		</div>
+	<!-- 	<div class="row cl">
+		      <label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>头像上传：</label>
+		      <div class="formControls col-xs-8 col-sm-9">
+		          <div class="weui-uploader__bd">
+		              <ul class="weui-uploader__files" id="uploaderFiles" style="float: left;">
+		                 <li id="img1" class="weui-uploader__file" style="background-image:url(__STATIC__/admin/temp/big/null.jpg)"></li>
+		              </ul>
+		              <div class="weui-uploader__input-box" style="float: left;">
+		                  <input type="hidden" name="myfile"  value="">
+		                  <input  id="photo1" name="myfile"  class="weui-uploader__input" type="file" accept="image/*" multiple/>
+		              </div>
+		          </div>
+		        </div>
+		    </div> -->
+		<div class="row cl">
+			<label class="form-label col-xs-4 col-sm-3">用户等级：</label>
+			<div class="formControls col-xs-8 col-sm-9"> <span class="select-box">
+				<select class="select" size="1" name="user_type">
+					<option value="2" selected>⭐普通用户⭐</option>
+					<option value="3">🌟会员用户🌟</option>
+					<option value="4">🌞至高无上🌞</option>
+				</select>
+				</span> </div>
+		</div>
+		<div class="row cl">
+			<label class="form-label col-xs-4 col-sm-3">状态：</label>
+			<div class="formControls col-xs-8 col-sm-9"> <span class="select-box">
+				<select class="select" size="1" name="user_state">
+					<option value="1" selected>启用</option>
+					<option value="2">禁用</option>
+				</select>
+				</span> </div>
+		</div>
+		<div class="row cl">
+			<div class="col-xs-8 col-sm-9 col-xs-offset-4 col-sm-offset-3">
+				<input class="btn btn-primary radius " type="submit" value="&nbsp;&nbsp;提交&nbsp;&nbsp;" id="submit">
+			</div>
+		</div>
+	</form>
+</article>
+
+{include file="templet/_footer" /}
+
+<!--请在下方写此页面业务相关的脚本--> 
+<script type="text/javascript" src="__STATIC__/admin/lib/My97DatePicker/4.8/WdatePicker.js"></script>
+<script type="text/javascript" src="__STATIC__/admin/lib/jquery.validation/1.14.0/jquery.validate.js"></script> 
+<script type="text/javascript" src="__STATIC__/admin/lib/jquery.validation/1.14.0/validate-methods.js"></script> 
+<script type="text/javascript" src="__STATIC__/admin/lib/jquery.validation/1.14.0/messages_zh.js"></script>
+<script type="text/javascript">
+$(function(){
+	// 失去焦点时检查用户名是否重复
+	$("#userlogin").blur(function(){
+		$.ajax({
+			type:'GET',
+			url:"user_chenk_name",
+			data:{userlogin:$(this).val()},
+			dataType:'json',
+			success:function(data){
+				if(data.status==1){
+					layer.msg(data.message, {time: 1000});
+				}else{
+					layer.alert(data.message);
+				}
+			}
+		});
+	});
+	$("#email").blur(function(){
+		$.ajax({
+			type:'GET',
+			url:"user_chenk_email",
+			data:{email:$(this).val()},
+			dataType:'json',
+			success:function(data){
+				if(data.status==0){
+					layer.alert(data.message);
+				}else{
+					
+					layer.msg(data.message, {time: 1000});
+				}
+			}
+		});
+	});
+	$('.skin-minimal input').iCheck({
+		checkboxClass: 'icheckbox-blue',
+		radioClass: 'iradio-blue',
+		increaseArea: '20%'
+	});
+	
+	$("#form-member-add").validate({
+		rules:{
+			username:{
+				required:true,
+				minlength:2,
+				maxlength:16
+			},
+			sex:{
+				required:true,
+			},
+			mobile:{
+				required:true,
+				isMobile:true,
+			},
+			email:{
+				required:true,
+				email:true,
+			},
+			uploadfile:{
+				required:true,
+			},
+			
+		},
+		onkeyup:false,
+		focusCleanup:true,
+		success:"valid",
+		submitHandler:function(form){
+			$(form).ajaxSubmit({
+				type: 'get',
+				data:$("#form-admin-add").serializeArray(),
+      			dataType:'json',
+				url: "{:url('user_add_exe')}" ,
+				success: function(data){
+					if (data=='success') {
+						layer.msg('操作成功!',{icon:1,time:1000});
+					}else{
+						layer.msg('操作失败!',{icon:1,time:1000});
+					}
+				},
+			});
+			var index = parent.layer.getFrameIndex(window.name);
+			layer.msg('操作成功!',{icon:1,time:1000});
+			// parent.layer.close(index);
+		}
+	});
+});
+</script> 
+<!--/请在上方写此页面业务相关的脚本-->
+</body>
+</html>

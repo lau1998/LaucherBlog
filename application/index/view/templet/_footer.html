@@ -1,0 +1,100 @@
+<footer class="footer-area">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 col-md-4">
+                    <div class="footer-single-widget">
+                        <a href="#"><img src="__STATIC__/index/img/core-img/logo.png" alt=""></a>
+                        <div class="copywrite-text mt-30">
+                            <p>
+Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This website is made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="javascript:;" target="_blank">LAUCHER-FASSS</a>
+<br><span><a href="http://www.miitbeian.gov.cn/" target="view_window">渝ICP备18002743号-1</a> |    </span>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-md-4">
+                    <div class="footer-single-widget">
+                        <ul class="footer-menu d-flex justify-content-between">
+                            <li><a href="#">Home</a></li>
+                            <li><a href="#">Fashion</a></li>
+                            <li><a href="#">Lifestyle</a></li>
+                            <li><a href="#">Contact</a></li>
+                            <li><a href="#">Gadgets</a></li>
+                            <li><a href="#">Video</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-12 col-md-4">
+                    <div class="footer-single-widget">
+                        <h5>订阅本站</h5>
+                        <form action="#" method="post">
+                            <input type="email" name="email" id="email" placeholder="输入你的邮箱账号">
+                            <button type="button"><i class="fa fa-arrow-right"></i></button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    {load href="__STATIC__/index/js/jquery/jquery-2.2.4.min.js" /}
+    <!-- 3D标签 -->
+    {load href="__STATIC__/index/js/jquery.svg3dtagcloud.min.js" /}
+    <script type="text/javascript">
+        $(document).ready(function(){
+            var entries = [ 
+                { label: 'html/css', url: '#', target: '_bla' },
+                { label: '网站资源', url: '#', target: '_bla' },
+                { label: '经验分享', url: '#', target: '_bla' },
+                { label: '社会实践', url: 'http://baidu.com', target: '_blan' },
+                { label: 'Dropdown Menu', url: '#', target: '_bl' },
+                { label: 'CodePen', url: 'http://codepen.io/', target: '_bla' },
+                { label: 'three.js', url: 'http://threejs.org/', target: '_blank' },
+                { label: 'Form Validation', url: '#', target: '_blan' },
+                { label: 'JS Compress', url: 'http://jscompress.com/', target: '_bla' },
+                { label: 'TinyPNG', url: 'https://tinypng.com/', target: '_blank' },
+                { label: 'Can I Use', url: 'http://caniuse.com/', target: '_blan' },
+                { label: 'URL shortener', url: 'https://goo.gl/', target: '_blan' },
+                { label: 'Grid Layout', url: '#', target: '_blan' },
+                { label: 'Twitter', url: 'https://twitter.com/', target: '_blank' },
+                { label: 'deviantART', url: 'http://nkunited.deviantart.com/', target: '_bla' },
+                { label: 'Gulp', url: 'http://gulpjs.com/', target: '_bl' },
+                // { label: 'Browsersync', url: 'https://www.browsersync.io/', target: '_bl' },
+                // { label: 'GitHub', url: 'https://github.com/', target: '_bla' },
+                // { label: 'Shadertoy', url: 'https://www.shadertoy.com/', target: '_blank' },
+                // { label: 'Tree View', url: '#', target: '_bl' },
+                // { label: 'jsPerf', url: 'http://jsperf.com/', target: '_blan' },
+                // { label: 'Foundation', url: 'http://foundation.zurb.com/', target: '_bla' },
+                // { label: 'CreateJS', url: 'http://createjs.com/', target: '_blan' },
+                // { label: 'Velocity.js', url: 'http://julian.com/research/velocity/', target: '_blank' },
+                // { label: 'TweenLite', url: 'https://greensock.com/docs/#/HTML5/GSAP/TweenLite/', target: '_blank' },
+                // { label: 'jQuery', url: 'https://jquery.com/', target: '_bla' },
+                // { label: 'Notification', url: '#', target: '_bla' },
+                // { label: 'Parallax', url: '#', target: '_bla' }
+            ];
+            var settings = {
+                entries: entries,
+                width: 320,
+                height: 250,
+                radius: '80%',
+                radiusMin: 75,
+                bgDraw: false,
+                bgColor: '#494A5F',
+                opacityOver: 1.00,
+                opacityOut: 0.05,
+                opacitySpeed: 6,
+                fov: 800,
+                speed: 0.5,
+                fontFamily: 'Oswald, Arial, sans-serif',
+                fontSize: '17',
+                fontColor: '#FF00FF',
+                fontWeight: 'normal',//bold
+                fontStyle: 'normal',//italic 
+                fontStretch: 'normal',//wider, narrower, ultra-condensed, extra-condensed, condensed, semi-condensed, semi-expanded, expanded, extra-expanded, ultra-expanded
+                fontToUpperCase: true
+
+            };
+            //var svg3DTagCloud = new SVG3DTagCloud( document.getElementById( 'holder'  ), settings );
+            $( '#tag-cloud' ).svg3DTagCloud( settings );
+        });
+    </script>
+    
